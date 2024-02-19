@@ -1,3 +1,6 @@
+
+gem 'dotenv', groups: [:development, :test]
+
 source "https://rubygems.org"
 
 ruby "3.1.2"
@@ -68,4 +71,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "pg", "~> 1.5"
+gem 'pg', '~> 1.5', '>= 1.5.5'

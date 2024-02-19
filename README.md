@@ -1,11 +1,16 @@
 # README
 
+## Install Docker
+Please install docker desktop or docker cli. After installation run following code in your shell
+```
+docker run -d --name postgres -h "localhost" -p 5432:5432 -v local_postgres:/var/lib/postgresql/data -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres postgres:16.1
+```
+
 ## Install Ruby
 Before you install Rails, you should check to make sure that your system has the proper prerequisites installed. These include:
 
 ```
 Ruby
-SQLite3
 ```
 Verify that you have a current version of Ruby installed
 
@@ -13,10 +18,25 @@ Verify that you have a current version of Ruby installed
 ruby --version
 ruby 2.7.0
 ```
-Verify that it is correctly installed and in your load PATH:
+
+create .env file in project root and add this lines:
+```
+DATABASE_NAME=postgres
+DATABASE_USER=postgres
+DATABASE_PASSWORD=postgres
+DATABASE_PORT=5432
+DATABASE_HOST=localhost
+```
+To enforce Ruby to know the .env files,
+add this line to the top of your application's Gemfile:
 
 ```
-sqlite3 --version
+gem 'dotenv', groups: [:development, :test]
+```
+then run this to install postgres connector and bkeepers dotenv
+```
+bundle add pg
+bundle install
 ```
 
 ## Installing Rails
@@ -39,12 +59,6 @@ and access url from your shell with browser
 http://127.0.0.1:3000
 ```
 
-## GEM Error with postgres
-If any errors with gemfile with postgres, run :
-```
-bundle add pg
-bundle install
-```
 
 ### Things you may want to cover:
 
