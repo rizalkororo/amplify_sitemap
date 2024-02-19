@@ -38,6 +38,14 @@ and access url from your shell with browser
 ```
 http://127.0.0.1:3000
 ```
+
+## GEM Error with postgres
+If any errors with gemfile with postgres, run :
+```
+bundle add pg
+bundle install
+```
+
 ### Things you may want to cover:
 
 * Ruby version
