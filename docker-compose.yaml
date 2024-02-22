@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16.1
+    environment:
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    ports:
+      - ${DATABASE_PORT}:5432
+    volumes:
+      - pg_ruby:/var/lib/postgresql/data
+
+  web:
+    build: .
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_PORT=${DATABASE_PORT}
+    ports:
+      - ${WEB_PORT}:3000
+    volumes:
+      - ${PWD}:/rails
+    depends_on:
+      - db
+
+volumes:
+  pg_ruby:

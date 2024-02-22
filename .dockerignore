@@ -42,8 +42,8 @@
 .bundleignore
 .byebug_history
 .rspec
-tmp
-log
+tmp/*
+log/*
 test
 config/deploy
 public/packs

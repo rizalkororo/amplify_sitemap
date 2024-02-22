@@ -72,3 +72,4 @@ group :test do
 end
 
 gem 'pg', '~> 1.5', '>= 1.5.5'
+gem 'sitemap_generator'
